@@ -1,5 +1,5 @@
 streamlit
 PyPDF2
 textblob
-openai
+openai==0.28
 streamlit-option-menu
