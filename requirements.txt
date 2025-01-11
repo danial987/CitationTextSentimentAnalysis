@@ -1,0 +1,5 @@
+streamlit
+PyPDF2
+textblob
+openai
+streamlit-option-menu
