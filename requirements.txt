@@ -4,8 +4,8 @@ textblob
 openai==0.28
 streamlit-option-menu
 scholarly
-openai
-PyPDF2
+openai==0.28.0
+requests==2.32.3
 psycopg2-binary
 textblob
 difflib
