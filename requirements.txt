@@ -5,7 +5,6 @@ openai==0.28
 streamlit-option-menu
 scholarly
 openai==0.28.0
-requests==2.32.3
 textblob
 difflib
 plotly
