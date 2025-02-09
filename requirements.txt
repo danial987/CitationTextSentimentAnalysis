@@ -3,3 +3,13 @@ PyPDF2
 textblob
 openai==0.28
 streamlit-option-menu
+scholarly
+openai
+PyPDF2
+psycopg2
+textblob
+difflib
+plotly
+networkx
+streamlit-agraph
+pandas

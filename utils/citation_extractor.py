@@ -5,7 +5,6 @@ from utils.helpers import split_text_into_chunks
 from difflib import SequenceMatcher
 import streamlit as st
 
-
 class CitationExtractor:
     def __init__(self):
         openai.api_key = st.secrets["openai"]["api_key"]
@@ -17,7 +16,6 @@ class CitationExtractor:
         references = self.extract_references(text)
         citations = self.get_citations(text)
 
-        # Debugging: Print extracted references and citations
         print(f"Extracted References: {references}")
         print(f"Extracted Citations: {citations}")
 
@@ -58,7 +56,7 @@ class CitationExtractor:
             except Exception as e:
                 print(f"Error during citation extraction: {e}")
 
-        return list(dict.fromkeys(citations))  # Remove duplicates
+        return list(dict.fromkeys(citations))  
 
     def extract_references(self, text):
         """
@@ -73,7 +71,7 @@ class CitationExtractor:
                 temperature=0.2,
             )
             references_raw = response["choices"][0]["message"]["content"].strip()
-            references = references_raw.split("\n")  # Split references into individual items
+            references = references_raw.split("\n")  
             return [ref.strip() for ref in references if ref.strip()]
         except Exception as e:
             print(f"Error during reference extraction: {e}")
@@ -84,22 +82,18 @@ class CitationExtractor:
         Match a citation to its most likely reference.
         """
         if len(references) > idx:
-            # First try to match by index (assumes order alignment)
             return references[idx]
 
-        # If no match by index, try similarity scoring
         best_match = None
         highest_similarity = 0
 
         for reference in references:
-            # Use SequenceMatcher to calculate similarity
             similarity = SequenceMatcher(None, citation.lower(), reference.lower()).ratio()
             if similarity > highest_similarity:
                 highest_similarity = similarity
                 best_match = reference
 
-        # Threshold for acceptable similarity
-        if highest_similarity > 0.4:  # Adjust threshold as needed
+        if highest_similarity > 0.4:  
             return best_match
 
         return "No matching reference found"
@@ -111,7 +105,6 @@ class CitationExtractor:
         if reference == "No matching reference found":
             return "https://scholar.google.com"
 
-        # Replace spaces with "+" for Google Scholar search format
         search_query = "+".join(reference.split())
         return f"https://scholar.google.com/scholar?q={search_query}"
 
