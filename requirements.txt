@@ -1,4 +1,4 @@
-streamlit
+streamlit==1.39.0
 PyPDF2
 textblob
 openai==0.28
@@ -6,10 +6,10 @@ streamlit-option-menu
 scholarly
 openai==0.28.0
 requests==2.32.3
-psycopg2-binary
 textblob
 difflib
 plotly
 networkx
 streamlit-agraph
 pandas
+psycopg2-binary==2.9.3
