@@ -48,8 +48,8 @@ class CitationExtractor:
                 response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[{"role": "user", "content": prompt}],
-                    max_tokens=300,
-                    temperature=0.2,
+                    max_tokens=2000,
+                    temperature=0.8,
                 )
                 sentences = response["choices"][0]["message"]["content"].strip().split("\n")
                 citations.extend([sentence.strip() for sentence in sentences if sentence.strip()])
@@ -67,8 +67,8 @@ class CitationExtractor:
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=500,
-                temperature=0.2,
+                max_tokens=2000,
+                temperature=0.8,
             )
             references_raw = response["choices"][0]["message"]["content"].strip()
             references = references_raw.split("\n")  
