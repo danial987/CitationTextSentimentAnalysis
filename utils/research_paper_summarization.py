@@ -31,7 +31,7 @@ class ResearchPaperSummarizer:
                     {"role": "system", "content": "You are an AI that summarizes research papers in a detailed yet concise manner."},
                     {"role": "user", "content": summary_prompt}
                 ],
-                max_tokens=300,
+                max_tokens=2000,
                 temperature=0.6
             )
             return response['choices'][0]['message']['content'].strip()
